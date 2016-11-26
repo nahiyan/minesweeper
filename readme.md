@@ -1,14 +1,20 @@
 ##Minesweeper
-Minesweeper is a popular puzzle game distributed with Windows OS. The objective of the game is simple: reveal the blocks without detonating the mines.
+Minesweeper is a popular puzzle game distributed with Windows OS.
 
+###Objective
+Reveal the blocks without detonating the mines.
+
+###How to play
 Number on each block indicates the number of mines in the surrounding blocks.
 
-The numbers are used to determine the safe blocks.
+The numbers are used as hints to determine if a block contains a mine or not.
+
+You can flag the blocks that you suspect to contain mines to help you keep track of mines.
 
 You win the game when you've revealed all the safe blocks on board.
 
 ##About this clone
-This is a clone of minesweeper made for educational purposes. It's written in C and based on ncurses. It's built in a modular way. Each modules fits together on the table to make the whole thing work.
+This is a clone of minesweeper made for educational purposes. It's written in C and based on ncurses. It's built in a modular way. Each modules works with others to make the whole system work.
 
 ##Modules
 Each module does a specific job and communicates with other modules to keep the system running. Modules communicate with each other by calling and/or passing data.
