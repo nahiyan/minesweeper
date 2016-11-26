@@ -1,11 +1,17 @@
 ##Minesweeper
-Minesweeper is a popular puzzle game distributed with Windows OS. The objective of the game is simple: reveal the blocks without detonating the mines. Number on each block indicates the number of mines in the 8 blocks surrounding it. The numbers are used to determine the safe blocks. You win the game when you've revealed all the safe blocks on board.
+Minesweeper is a popular puzzle game distributed with Windows OS. The objective of the game is simple: reveal the blocks without detonating the mines.
+
+Number on each block indicates the number of mines in the surrounding blocks.
+
+The numbers are used to determine the safe blocks.
+
+You win the game when you've revealed all the safe blocks on board.
 
 ##About this clone
-This is a clone of minesweeper made for educational purposes. It's written in C and based on ncurses. It's built in a modular way. Each modules fits together on the table to make the whole thing work. Understanding how each module works and the way they communicate is essential for getting idea of how it all works.
+This is a clone of minesweeper made for educational purposes. It's written in C and based on ncurses. It's built in a modular way. Each modules fits together on the table to make the whole thing work.
 
 ##Modules
-Each module does a specific job and communicates with other modules to keep the system running. Modules communicate by directly calling each other and passing data to others.
+Each module does a specific job and communicates with other modules to keep the system running. Modules communicate with each other by calling and/or passing data.
 
 List of modules:
 
@@ -37,7 +43,7 @@ It stores the following attributes:
 	- `0/1`
 - Number
 	- `0` nothing
-	- `1-8` numbers 
+	- `1-8` number of mines
 - Mine
 	- `0/1`
  
