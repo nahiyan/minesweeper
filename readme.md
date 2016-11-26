@@ -42,7 +42,7 @@ It stores the following attributes:
 	- `0/1`
  
 ###generate_mines
-Random locations are picked and populated on the 'map.'
+Random locations are picked and mines are placed there.
 ###keyboard_listener
 It listens to the keyboard for commands.
 
