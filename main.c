@@ -2,14 +2,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int height,
-    width,
-    map[1000][1000][4],
-    max_mines,
-    game_status = 0, // 0 -> not started, -1 -> lost, 1 -> game started and 2 -> won!
-    map_generated = 0,
-    selection[2] = {0, 0}; // y x
-
 #include "modules/random_number.c"
 #include "modules/generate_map.c"
 #include "modules/render_board.c"
