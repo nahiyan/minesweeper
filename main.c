@@ -11,12 +11,12 @@ int height,
     map_generated = 0,
     selection[2] = {0, 0}; // y x
 
-int invisible_block_count () {
+int unrevealed_good_blocks () {
     int count = 0, i, j;
 
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++) {
-            if (!map[i][j][1])
+            if (!map[i][j][1] && !map[i][j][3]) // If invisible and doesn't contain a mine
                 count++;
         }
     }
@@ -125,17 +125,17 @@ void render_board () {
         }
     }
 
-    if (game_status == -1)
-        mvprintw(0, 0, "YOU LOST!");
-    if (game_status == 2)
-        mvprintw(0, 0, "YOU WON!");
-
     for(i = 0; i < height; i++) {
         mvprintw(i, width, "|");
     }
     for(j = 0; j <= width; j++) {
         mvprintw(height, j, "-");
     }
+
+    if (game_status == -1)
+        mvprintw(0, 0, "YOU LOST!");
+    if (game_status == 2)
+        mvprintw(0, 0, "YOU WON!");
 
     move(selection[0], selection[1]);
 
@@ -184,10 +184,12 @@ void keyboard_listener () {
                     *x += 1;
                 break;
             case 'q':
-                if (map[*y][*x][0])
-                    map[*y][*x][0] = 0;
-                else
-                    map[*y][*x][0] = 1;
+                if (!map[*y][*x][1]) { // Only let player flag invisible blocks
+                    if (map[*y][*x][0])
+                        map[*y][*x][0] = 0;
+                    else
+                        map[*y][*x][0] = 1;
+                }
                 break;
             case 'e':
                 if (game_status == 0) {
@@ -198,12 +200,11 @@ void keyboard_listener () {
                 if (!map[*y][*x][0]) { // Continue if it's not flagged
                     if (map[*y][*x][3]) { // If the user steps on a mine
                         make_map_visible();
-                        game_status = -1;
-                        // mvprintw(0, 0, "You lost!");
+                        game_status = -1; // Player lost!
                     } else {
                         reveal_block(*y, *x);
-                        if (!invisible_block_count())
-                            game_status = 2;
+                        if (!unrevealed_good_blocks())
+                            game_status = 2; // Player won!
                     }
                 }
                 

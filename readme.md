@@ -2,53 +2,31 @@
 Minesweeper is a popular puzzle game distributed with Windows OS. The objective of the game is simple: reveal the blocks without detonating the mines. Number on each block indicates the number of mines in the 8 blocks surrounding it. The numbers are used to determine the safe blocks. You win the game when you've revealed all the safe blocks on board.
 
 ##About this clone
-This is a clone of minesweeper made for educational purposes. It's written in JS. The game has been built part by part. Each part works with others to make the whole thing work. Understanding how each part works and the way they communicate can help you figure out how it works.
+This is a clone of minesweeper made for educational purposes. It's written in C and based on ncurses. It's built in a modular way. Each modules fits together on the table to make the whole thing work. Understanding how each module works and the way they communicate is essential for getting idea of how it all works.
 
-##Parts
-Each part does a specific job and communicates with other parts to keep the system running. Parts communicate by directly calling each other and passing data to others through arguments and/or global variables.
+##Modules
+Each module does a specific job and communicates with other modules to keep the system running. Modules communicate by directly calling each other and passing data to others.
 
-List of parts:
+List of modules:
 
-- renderBoard
-- generateMap
-- keyboardListener
-- generateMines
-- makeMapVisible
-- revealBlock
-- invisbleBlockCount
-- inMap
-- numberBlocks
-- getRandomInt
+- render_board
+- generate_map
+- keyboard_listener
+- generate_mines
+- make\_map\_visible
+- reveal_block
+- in_map
+- unrevealed\_good\_blocks
+- number_blocks
+- randon_number
 
-##renderBoard
+###render_board
 It draws the board on the screen. It provides an interface for the user to play the game. It's called whenever the board is updated. It's because the changes are buffered and rendering works absolutely, not relatively.
 
-##generateMap
-A global variable 'map' is created which holds info about the board.
-##generateMines
-Random locations are picked and saved on the global variable, 'map'.
-##keyboardListener
-Listen to the keyboard for commands
+###generate_map
+A `map object` is created which holds info about the board.
 
-| Key         	| Command     					|
-| ---------------|---------------------------------|
-| WASD     		| Movement of selector	       	|
-| Q     			| Flag					       	|
-| E     			| Reveal block			       	|
-##makeMapVisible
-It makes the entire map visible. It's called when the user clicks on a mine and the game ends.
-##revealBlock
-It reveals a specific block along with nearby blank blocks (not numbered). It's recursive which means it calls itself, passing the blank blocks in the surrounding in each call.
-##inMap
-It determines if a given location is within the borders of the map.
-##invisibleBlockCount
-It counts the blocks in the map which are still not revealed.
-##numberBlocks
-It goes through every single block on board and numbers them. Number equals the mine count in the surrounding (8 max).
-##getRandomInt
-Generate a random int, simple as that!
-
-##Map object
+#####Map object
 The object is used to store info about the board.
 
 It stores the following attributes:
@@ -62,8 +40,31 @@ It stores the following attributes:
 	- `1-8` numbers 
 - Mine
 	- `0/1`
+ 
+###generate_mines
+Random locations are picked and populated on the 'map.'
+###keyboard_listener
+It listens to the keyboard for commands.
 
-##Board
+| Key         	| Command     					|
+| ---------------|---------------------------------|
+| WASD     		| Movement of selector	       	|
+| Q     			| Flag					       	|
+| E     			| Reveal block			       	|
+###make_map\_visible
+It makes the entire map visible. It's called when the user clicks on a mine and the game ends.
+###reveal_block
+It reveals a specific block along with nearby blank blocks (not numbered). It's recursive which means it calls itself, passing the blank blocks in the surrounding in each call. This module is responsible for making large part of the board visible (giving you that smile).
+###in_map
+It determines if a given location is within the board.
+###unrevealed_good\_blocks
+It counts the blocks in the map which are good (hold no mine) and unrevealed.
+###number_blocks
+It goes through every single block on board and numbers them. Number equals the mine count in the surrounding (8 max).
+###random_number
+Generate a random int, simple as that!
+
+##Board UI
 
 | Block         | Character     			|
 | ------------- |-------------------------|
@@ -82,4 +83,10 @@ You can choose between 4 options:
 4. Custom
 
 ###Easy
-It'll present a 
+It'll present a 20x10 board with 30 mines.
+###Intermediate
+It'll present a 40x20 board with 300 mines.
+###Expert
+It'll present a 80x40 board with 600 mines.
+###Custom
+You get to choose the dimensions of the board along with the mine quantity.
