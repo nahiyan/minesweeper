@@ -70,7 +70,7 @@ Generate a random int, simple as that!
 | ------------- |-------------------------|
 | Invisible     | x			          	|
 | Blank         | [empty_space]		  	|
-| Numbered      | 0-9					  	|
+| Numbered      | 1-9					  	|
 | Flagged       | !					  	|
 | Mine          | *					  	|
 
