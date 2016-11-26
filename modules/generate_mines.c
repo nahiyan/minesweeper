@@ -1,4 +1,4 @@
-void generate_mines (int y, int x) {
+void generate_mines (int y, int x, int max_mines, int height, int width, int map[height][width][4]) {
     int mines = 0;
     int position[2];
 
@@ -13,5 +13,5 @@ void generate_mines (int y, int x) {
         }
     }
 
-    number_blocks();
+    number_blocks(height, width, map);
 }

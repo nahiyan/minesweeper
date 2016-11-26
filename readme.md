@@ -31,6 +31,8 @@ List of modules:
 - unrevealed\_good\_blocks
 - number_blocks
 - randon_number
+- new_game_options
+- new_game
 
 ###render_board
 It draws the board on the screen. It provides an interface for the user to play the game. It's called whenever the board is updated. It's because the changes are buffered and rendering works absolutely, not relatively.
@@ -75,6 +77,10 @@ It counts the blocks in the map which are good (hold no mine) and unrevealed.
 It goes through every single block on board and numbers them. Number equals the mine count in the surrounding (8 max).
 ###random_number
 Generate a random int, simple as that!
+###new_game
+It prepares and sets up the stage so the user can play.
+###new_game_options
+It provides an UI for options of the new game.
 
 ##Board UI
 

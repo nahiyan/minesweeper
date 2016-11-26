@@ -1,4 +1,4 @@
-void generate_map (int height, int width) {
+void generate_map (int height, int width, int map[height][width][4]) {
     int i, j;
     for (i = 0; i < height; i++) {
         for (j = 0; j < width; j++) {
@@ -8,5 +8,4 @@ void generate_map (int height, int width) {
             map[i][j][3] = 0;
         }
     }
-    map_generated = 1;
 }

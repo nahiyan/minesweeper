@@ -1,11 +1,15 @@
 void new_game_options () {
+    int height = 10,
+        width = 20,
+        mines = 30;
+
     // Setup ncurses window
     initscr();
     noecho();
     curs_set(TRUE);
 
     // Let player choose the difficulty
-    mvprintw(0, 0, "Select your difficulty:\n");
+    printw("Select your difficulty:\n");
     printw("1. Beginner\n");
     printw("2. Intermediate\n");
     printw("3. Expert\n");
@@ -18,33 +22,32 @@ void new_game_options () {
             case '1':
                 height = 10;
                 width = 20;
-                max_mines = 30;
+                mines = 30;
                 break;
             case '2':
                 height = 20;
                 width = 40;
-                max_mines = 300;
+                mines = 300;
                 break;
             case '3':
                 height = 40;
                 width = 80;
-                max_mines = 600;
+                mines = 600;
                 break;
         }
     else if (difficulty == '4') {
+        // Setup the ncurses window
         clear();
         echo();
+
         printw("What will be the size of your board?\n");
         printw("Height: ");
         scanw("%d", &height);
         printw("Width: ");
         scanw("%d", &width);
         printw("Mines: ");
-        scanw("%d", &max_mines);
-    } else {
-        height = 10;
-        width = 20;
-        max_mines = 30;
+        scanw("%d", &mines);
     }
-    new_game();
+
+    new_game(height, width, mines);
 }

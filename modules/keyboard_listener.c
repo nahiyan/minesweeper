@@ -1,4 +1,4 @@
-void keyboard_listener () {
+void keyboard_listener (int height, int width, int map[height][width][4], int selection[2], int* game_status, int mines) {
     char input;
     int* y = &selection[0];
     int* x = &selection[1];
@@ -30,25 +30,25 @@ void keyboard_listener () {
                 }
                 break;
             case 'e':
-                if (game_status == 0) {
-                    game_status = 1;
-                    generate_mines(*y, *x);
+                if (*game_status == 0) {
+                    *game_status = 1;
+                    generate_mines(*y, *x, mines, height, width, map);
                 }
 
                 if (!map[*y][*x][0]) { // Continue if it's not flagged
                     if (map[*y][*x][3]) { // If the user steps on a mine
-                        make_map_visible();
-                        game_status = -1; // Player lost!
+                        make_map_visible(height, width, map);
+                        *game_status = -1; // Player lost!
                     } else {
-                        reveal_block(*y, *x);
-                        if (!unrevealed_good_blocks())
-                            game_status = 2; // Player won!
+                        reveal_block(*y, *x, height, width, map);
+                        if (!unrevealed_good_blocks(height, width, map))
+                            *game_status = 2; // Player won!
                     }
                 }
                 
                 break;
         }
 
-        render_board();
+        render_board(height, width, map, selection, game_status);
     }
 }

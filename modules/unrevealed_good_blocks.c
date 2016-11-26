@@ -1,4 +1,4 @@
-int unrevealed_good_blocks () {
+int unrevealed_good_blocks (int height, int width, int map[height][width][4]) {
     int count = 0, i, j;
 
     for (i = 0; i < height; i++) {
