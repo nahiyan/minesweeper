@@ -29,9 +29,10 @@ void render_board (int height, int width, int map[height][width][4], int selecti
     for(i = 0; i < height; i++) {
         mvprintw(i, width, "|");
     }
-    for(j = 0; j <= width; j++) {
+    for(j = 0; j < width; j++) {
         mvprintw(height, j, "-");
     }
+    mvprintw(height, width, "+");
 
     // Let the user know if the game is over
     if (*game_status == -1)

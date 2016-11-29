@@ -7,11 +7,11 @@ Reveal the blocks without detonating the mines.
 ###How to play
 Number on each block indicates the number of mines in the surrounding blocks.
 
-The numbers are used as hints to determine if a block contains a mine or not.
+The numbers are used as hints to determine if a block contains a mine or not. Blocks which hold no mine are known as 'good blocks'.
 
 You can flag the blocks that you suspect to contain mines to help you keep track of mines.
 
-You win the game when you've revealed all the safe blocks on board.
+You win the game when you've revealed all the good blocks on board.
 
 ##About this clone
 This is a clone of minesweeper made for educational purposes. It's written in C and based on ncurses. It's built in a modular way. Each modules works with others to make the whole system work.
@@ -60,11 +60,11 @@ Random locations are picked and mines are placed there.
 ###keyboard_listener
 It listens to the keyboard for commands.
 
-| Key         	| Command     					|
-| ---------------|---------------------------------|
-| WASD     		| Movement of selector	       	|
-| Q     			| Flag					       	|
-| E     			| Reveal block			       	|
+| Key         	    | Command     					|
+| ------------------|-------------------------------|
+| WASD     		    | Movement of selector	       	|
+| E     			| Flag					       	|
+| Q     			| Reveal block			       	|
 ###make_map\_visible
 It makes the entire map visible. It's called when the user clicks on a mine and the game ends.
 ###reveal_block
@@ -84,11 +84,11 @@ It provides an UI for options of the new game.
 
 ##Board UI
 
-| Block         | Character     			|
-| ------------- |-------------------------|
+| Block         | Character    			|
+| ------------- |-----------------------|
 | Invisible     | x			          	|
 | Blank         | [empty_space]		  	|
-| Numbered      | 1-9					  	|
+| Numbered      | 1-9			    	|
 | Flagged       | !					  	|
 | Mine          | *					  	|
 
@@ -101,10 +101,10 @@ You can choose between 4 options:
 4. Custom
 
 ###Easy
-It'll present a 20x10 board with 30 mines.
+It'll present a 20x10 board with 15 mines.
 ###Intermediate
-It'll present a 40x20 board with 300 mines.
+It'll present a 40x20 board with 200 mines.
 ###Expert
-It'll present a 80x40 board with 600 mines.
+It'll present a 80x40 board with 400 mines.
 ###Custom
 You get to choose the dimensions of the board along with the mine quantity.

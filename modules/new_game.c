@@ -11,10 +11,6 @@ void new_game(int height, int width, int mines) {
     generate_map(height, width, map);
     render_board(height, width, map, selection, &game_status);
 
-    // Set cursor at position 0, 0
-    move(0, 0);
-    refresh();
-
     // Listen to keyboard
     keyboard_listener(height, width, map, selection, &game_status, mines);
 

@@ -21,7 +21,7 @@ void keyboard_listener (int height, int width, int map[height][width][4], int se
                 if ((*x + 1) >= 0 && (*x + 1) <= (width - 1))
                     *x += 1;
                 break;
-            case 'q':
+            case 'e':
                 if (!map[*y][*x][1]) { // Only let player flag invisible blocks
                     if (map[*y][*x][0])
                         map[*y][*x][0] = 0;
@@ -29,7 +29,7 @@ void keyboard_listener (int height, int width, int map[height][width][4], int se
                         map[*y][*x][0] = 1;
                 }
                 break;
-            case 'e':
+            case 'q':
                 if (*game_status == 0) {
                     *game_status = 1;
                     generate_mines(*y, *x, mines, height, width, map);
