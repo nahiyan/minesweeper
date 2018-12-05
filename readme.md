@@ -55,9 +55,9 @@ It stores the following attributes:
 - Mine
 	- `0/1`
  
-###generate_mines
+### generate_mines
 Random locations are picked and mines are placed there.
-###keyboard_listener
+### keyboard_listener
 It listens to the keyboard for commands.
 
 | Key         	    | Command     					|
